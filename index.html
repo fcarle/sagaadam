@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga & Adam's Wedding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Protected Entry Page -->
+    <div id="password-page" class="password-container">
+        <div class="password-overlay">
+            <div class="password-box">
+                <img src="logo.png" alt="Saga & Adam Wedding Logo" class="wedding-logo">
+                <p class="wedding-subtitle">August 8th, 2024 • Sweden</p>
+                <div class="password-input-container">
+                    <input type="password" id="password-input" placeholder="Enter password">
+                    <button id="enter-btn" onclick="checkPassword()">Enter</button>
+                </div>
+                <p class="password-hint">Please enter the password to view our wedding website</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="main-website" class="hidden">
+        <!-- Page Navigation Buttons -->
+        <button id="prev-page" class="page-nav-btn prev-btn" onclick="previousPage()">
+        </button>
+        <button id="next-page" class="page-nav-btn next-btn" onclick="nextPage()">
+        </button>
+
+        <!-- Page Container -->
+        <div class="page-container">
+
+            <!-- Welcome Page -->
+            <div id="welcome" class="page active">
+                <div class="page-content">
+                    <div class="hero-content">
+                        <img src="logo.png" alt="Saga & Adam Wedding Logo" class="welcome-logo">
+                        <div class="wedding-date">August 8th, 2024</div>
+                        <div class="wedding-location">Viken, Sweden</div>
+                        <p class="hero-description">
+                            Join us for a weekend of celebration as we begin our journey together. 
+                            We can't wait to share this special time with our family and friends!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Page -->
+            <div id="schedule" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">Weekend Schedule & Locations</h2>
+                    
+                    <div class="schedule-timeline">
+                        <!-- Friday Event -->
+                        <div class="timeline-event left">
+                            <div class="event-photo">
+                                <img src="firstphoto.png" alt="Adam's Birthday Party Venue" class="venue-image">
+                            </div>
+                            <div class="event-content">
+                                <div class="date-badge">Friday, 7th August</div>
+                                <h3 class="event-title">Adam's Birthday Party</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>5:00 PM - 10:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>Bläsinge Gård</strong><br>
+                                            Gamla Södåkravägen 127<br>
+                                            263 92 Jonstorp, Sweden
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Join us for food, drinks, and relaxed sports/games in casual attire (Saga will be dressing up!). Food and drinks will be provided.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday Ceremony -->
+                        <div class="timeline-event right">
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Wedding Ceremony</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>12:00 PM - 1:00 PM</strong><br>
+                                            Viken Church<br>
+                                            Kyrkbacken 4, 263 61 Viken, Sweden
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Join us as we exchange vows in this beautiful historic church</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-photo">
+                                <img src="church-photo.jpg" alt="Viken Church" class="venue-image">
+                            </div>
+                        </div>
+
+                        <!-- Saturday Drinks & Canapés -->
+                        <div class="timeline-event left">
+                            <div class="event-photo">
+                                <img src="viken.png" alt="Viken - Drinks & Canapés Location" class="venue-image">
+                            </div>
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Drinks & Canapés</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>1:00 PM - 3:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Viken (exact spot to be communicated)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Celebrate with us with drinks and light bites in the beautiful Viken surroundings</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday Evening -->
+                        <div class="timeline-event right featured">
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Evening Dinner & Party</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Evening celebration</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>Bläsinge Gård</strong><br>
+                                            Gamla Södåkravägen 127<br>
+                                            263 92 Jonstorp, Sweden
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Enjoy a wonderful dinner followed by dancing and celebration into the night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-photo">
+                                <img src="dinner-venue-photo.jpg" alt="Dinner Venue" class="venue-image">
+                            </div>
+                        </div>
+
+                        <!-- Sunday Event -->
+                        <div class="timeline-event left">
+                            <div class="event-photo">
+                                <img src="lastphoto.png" alt="Viken - Farewell Brunch Location" class="venue-image">
+                            </div>
+                            <div class="event-content">
+                                <div class="date-badge">Sunday, 9th August</div>
+                                <h3 class="event-title">Farewell & Brunch</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Around 1:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Viken (general area)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Bloody Marys, drinks, and food provided to wind down before goodbyes and farewells</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP Page -->
+            <div id="rsvp" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">RSVP</h2>
+                    <p class="section-subtitle">Please let us know if you can join us for our special weekend</p>
+                    
+                    <form id="rsvp-form" class="rsvp-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="attendance">Will you be attending? *</label>
+                            <select id="attendance" name="attendance" required>
+                                <option value="">Please select</option>
+                                <option value="yes-all">Yes, all weekend events</option>
+                                <option value="yes-partial">Yes, but only some events</option>
+                                <option value="no">Sorry, I can't make it</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="events-group" style="display: none;">
+                            <label>Which events will you attend?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="friday">
+                                    <span>Friday - Adam's Birthday Party</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="saturday-ceremony">
+                                    <span>Saturday - Wedding Ceremony</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="saturday-reception">
+                                    <span>Saturday - Reception & Party</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="sunday">
+                                    <span>Sunday - Farewell Brunch</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Number of guests (including yourself) *</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">Select number</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5+">5 or more</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dietary">Dietary restrictions or allergies</label>
+                            <textarea id="dietary" name="dietary" placeholder="Please let us know about any dietary restrictions, allergies, or special requirements"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message for Saga & Adam</label>
+                            <textarea id="message" name="message" placeholder="Share your wishes, memories, or anything you'd like to tell us!"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send RSVP</button>
+                    </form>
+                    
+                    <div id="rsvp-success" class="success-message hidden">
+                        <h3>Thank you!</h3>
+                        <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">Contact</h2>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <h3>Saga</h3>
+                            <div class="contact-info">
+                                <p>Email: saga@email.com</p>
+                                <p>Phone: +46 xxx xxx xxxx</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3>Adam</h3>
+                            <div class="contact-info">
+                                <p>Email: adam@email.com</p>
+                                <p>Phone: +46 xxx xxx xxxx</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-info">
+                        <h3>Getting There</h3>
+                        <p>All locations are in the beautiful Skåne region of Sweden. We recommend renting a car or coordinating transportation with other guests. More detailed directions will be sent closer to the wedding date.</p>
+                        
+                        <h3>Local Taxi Services</h3>
+                        <div class="taxi-grid">
+                            <div class="taxi-card">
+                                <h4>Taxi Helsingborg 24x7</h4>
+                                <p class="taxi-phone">+46 42 18 09 00</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>FM Taxi Helsingborg</h4>
+                                <p class="taxi-phone">+46 42 551 15</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>Taxi Höganäs</h4>
+                                <p class="taxi-rating">Kullabygden Transport Service</p>
+                                <p class="taxi-phone">042-330 000</p>
+                                <p class="taxi-location">Höganäs, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>Helsingborg Taxi</h4>
+                                <p class="taxi-phone">+46 42 21 72 17</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Accommodation</h3>
+                        <p>We have reserved rooms at nearby hotels. Please contact us for recommendations and booking information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
