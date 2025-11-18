@@ -1,24 +1,37 @@
 // Password Protection
-const validPasswords = ['fabian007', 'Fabian007'];
+const validPasswords = ['Wedding2026', 'wedding2026'];
 
 function checkPassword() {
     const passwordInput = document.getElementById('password-input');
     const enteredPassword = passwordInput.value.trim();
     
     if (validPasswords.includes(enteredPassword)) {
-        // Hide password page and show main website
-        document.getElementById('password-page').classList.add('hidden');
-        document.getElementById('main-website').classList.remove('hidden');
+        // Get video and overlay elements
+        const loginVideo = document.getElementById('login-video');
+        const passwordOverlay = document.querySelector('.password-overlay');
+        const passwordPage = document.getElementById('password-page');
+        const mainWebsite = document.getElementById('main-website');
+        
+        // Start playing the video
+        loginVideo.play();
+        
+        // Fade out the overlay
+        passwordOverlay.classList.add('fade-out');
+        
+        // Start expanding video after overlay fades
+        setTimeout(() => {
+            loginVideo.classList.add('expanding');
+        }, 400);
+        
+        // After video expansion, switch to main website instantly
+        setTimeout(() => {
+            passwordPage.classList.add('hidden');
+            mainWebsite.classList.remove('hidden');
+            mainWebsite.style.opacity = '1';
+        }, 6400);
         
         // Clear password input
         passwordInput.value = '';
-        
-        // Add smooth entrance animation
-        document.getElementById('main-website').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('main-website').style.transition = 'opacity 0.8s ease-out';
-            document.getElementById('main-website').style.opacity = '1';
-        }, 100);
     } else {
         // Show error feedback
         passwordInput.style.borderColor = '#e74c3c';
@@ -104,6 +117,16 @@ function updateNavigationButtons() {
     const prevBtn = document.getElementById('prev-page');
     const nextBtn = document.getElementById('next-page');
     
+    // Update navigation links active state
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach((link, index) => {
+        if (index === currentPageIndex) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
     // Disable/enable buttons based on current page
     if (currentPageIndex === 0) {
         prevBtn.disabled = true;
@@ -120,6 +143,20 @@ function updateNavigationButtons() {
         nextBtn.disabled = false;
         nextBtn.style.opacity = '0.8';
     }
+}
+
+// Navigate to a specific page by ID
+function goToPage(pageId) {
+    const pageIndex = pages.indexOf(pageId);
+    if (pageIndex === -1 || pageIndex === currentPageIndex || isTransitioning) return;
+    
+    isTransitioning = true;
+    currentPageIndex = pageIndex;
+    showPage(pages[currentPageIndex]);
+    
+    setTimeout(() => {
+        isTransitioning = false;
+    }, 800);
 }
 
 // Handle keyboard navigation (optional)
@@ -155,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show/hide events checkboxes based on attendance selection
     attendanceSelect.addEventListener('change', function() {
-        if (this.value === 'yes-partial') {
+        if (this.value === 'yes') {
             eventsGroup.style.display = 'block';
         } else {
             eventsGroup.style.display = 'none';
@@ -175,14 +212,12 @@ function submitRSVP() {
     
     // Collect form data
     const rsvpData = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
+        name: formData.get('name'),
         email: formData.get('email'),
         attendance: formData.get('attendance'),
-        guests: formData.get('guests'),
-        dietary: formData.get('dietary'),
-        message: formData.get('message'),
         events: formData.getAll('events').join(', '),
+        dietary: formData.get('dietary'),
+        questions: formData.get('questions'),
         timestamp: new Date().toISOString(),
         submittedAt: new Date().toLocaleString('en-US', {
             timeZone: 'Europe/Stockholm',
@@ -225,24 +260,28 @@ function submitRSVP() {
 
 async function sendToGoogleSheets(data) {
     // Google Apps Script Web App URL (you'll need to replace this with your actual URL)
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBBqsrhRcNOeNE1zk7I8GiVTeyCxU9wMg9sYpLcm_cfxFQO9Ak6S4ieyzE-dQZpA4a/exec';
     
     try {
+        // Add a small delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
         const response = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         });
         
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        
-        return await response.json();
+        // With no-cors mode, we can't read the response, but if no error was thrown, it succeeded
+        // Wait a moment to ensure the data is written
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return { status: 'success' };
     } catch (error) {
+        console.error('Error details:', error);
+        
         // Fallback: Try to open email client with RSVP details
         const emailSubject = encodeURIComponent('RSVP - Saga & Adam Wedding');
         const emailBody = encodeURIComponent(`
@@ -250,13 +289,12 @@ Hi Saga & Adam,
 
 Here is my RSVP for your wedding:
 
-Name: ${data.firstName} ${data.lastName}
+Name: ${data.name}
 Email: ${data.email}
 Attendance: ${data.attendance}
-Number of Guests: ${data.guests}
-Events: ${data.events || 'All events'}
+Events: ${data.events || 'Not specified'}
 Dietary Restrictions: ${data.dietary || 'None'}
-Message: ${data.message || 'None'}
+Questions: ${data.questions || 'None'}
 
 Looking forward to celebrating with you!
 
@@ -264,7 +302,7 @@ Submitted on: ${data.submittedAt}
         `);
         
         // Open default email client as fallback
-        window.location.href = `mailto:saga@email.com,adam@email.com?subject=${emailSubject}&body=${emailBody}`;
+        window.location.href = `mailto:saga.m.care@gmail.com,adamdwalker91@gmail.com?subject=${emailSubject}&body=${emailBody}`;
         
         // Still throw error to show user the fallback was used
         throw new Error('Used email fallback');

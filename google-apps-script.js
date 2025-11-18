@@ -18,8 +18,8 @@
  */
 
 // Replace this with your Google Sheet ID
-const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
-const SHEET_NAME = 'RSVP Responses';
+const SHEET_ID = '1-6MzNF8qhLsfSPpRSLnVRBUiaEWNvuQv0RoVuzjNAw4';
+const SHEET_NAME = 'Sheet1';
 
 function doPost(e) {
   try {
@@ -33,14 +33,12 @@ function doPost(e) {
     if (sheet.getLastRow() === 0) {
       const headers = [
         'Timestamp',
-        'First Name',
-        'Last Name',
+        'Name',
         'Email',
         'Attendance',
-        'Number of Guests',
         'Events',
         'Dietary Restrictions',
-        'Message',
+        'Questions',
         'Submitted At (Sweden Time)'
       ];
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
@@ -55,14 +53,12 @@ function doPost(e) {
     // Prepare the row data
     const rowData = [
       data.timestamp,
-      data.firstName,
-      data.lastName,
+      data.name,
       data.email,
       data.attendance,
-      data.guests,
       data.events || '',
       data.dietary || '',
-      data.message || '',
+      data.questions || '',
       data.submittedAt
     ];
     
@@ -72,8 +68,8 @@ function doPost(e) {
     // Auto-resize columns
     sheet.autoResizeColumns(1, rowData.length);
     
-    // Send confirmation email (optional)
-    sendConfirmationEmail(data);
+    // Send confirmation email (optional) - DISABLED
+    // sendConfirmationEmail(data);
     
     // Return success response
     return ContentService
@@ -151,23 +147,20 @@ function sendConfirmationEmail(data) {
       eventsList = eventsArray.join('\n• ');
     }
     
-    const attendanceText = data.attendance === 'yes-all' ? 'All weekend events' :
-                          data.attendance === 'yes-partial' ? 'Selected events' :
-                          'Unable to attend';
+    const attendanceText = data.attendance === 'yes' ? 'Yes' : 'No';
     
     const emailBody = `
-Dear ${data.firstName},
+Dear ${data.name},
 
 Thank you for your RSVP! We're so excited to celebrate with you.
 
 Here are your RSVP details:
-• Name: ${data.firstName} ${data.lastName}
+• Name: ${data.name}
 • Email: ${data.email}
 • Attendance: ${attendanceText}
-• Number of guests: ${data.guests}
 ${data.events ? `• Events attending:\n  • ${eventsList}` : ''}
 ${data.dietary ? `• Dietary restrictions: ${data.dietary}` : ''}
-${data.message ? `• Your message: "${data.message}"` : ''}
+${data.questions ? `• Your questions: "${data.questions}"` : ''}
 
 We'll send more details about the weekend closer to the date.
 
@@ -193,23 +186,22 @@ Sunday, 9th August - Farewell Brunch
     GmailApp.sendEmail(data.email, subject, emailBody);
     
     // Optional: Send notification to bride and groom
-    const notificationSubject = `New RSVP from ${data.firstName} ${data.lastName}`;
+    const notificationSubject = `New RSVP from ${data.name}`;
     const notificationBody = `
 New RSVP received:
 
-Name: ${data.firstName} ${data.lastName}
+Name: ${data.name}
 Email: ${data.email}
 Attendance: ${attendanceText}
-Guests: ${data.guests}
 ${data.events ? `Events: ${eventsList}` : ''}
 ${data.dietary ? `Dietary: ${data.dietary}` : ''}
-${data.message ? `Message: "${data.message}"` : ''}
+${data.questions ? `Questions: "${data.questions}"` : ''}
 
 Submitted: ${data.submittedAt}
     `;
     
     // Replace with actual email addresses
-    const brideGroomEmails = ['saga@email.com', 'adam@email.com'];
+    const brideGroomEmails = ['saga.m.carle@gmail.com', 'adamdwalker91@gmail.com'];
     brideGroomEmails.forEach(email => {
       GmailApp.sendEmail(email, notificationSubject, notificationBody);
     });
@@ -226,14 +218,12 @@ Submitted: ${data.submittedAt}
  */
 function testRSVP() {
   const testData = {
-    firstName: 'Test',
-    lastName: 'User',
+    name: 'Test User',
     email: 'test@example.com',
-    attendance: 'yes-all',
-    guests: '2',
+    attendance: 'yes',
     events: 'friday,saturday-ceremony,saturday-reception,sunday',
     dietary: 'No restrictions',
-    message: 'So excited for your special day!',
+    questions: 'So excited for your special day!',
     timestamp: new Date().toISOString(),
     submittedAt: new Date().toLocaleString('en-US', {
       timeZone: 'Europe/Stockholm',
