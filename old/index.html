@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga & Adam's Wedding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Protected Entry Page -->
+    <div id="password-page" class="password-container">
+        <video id="login-video" class="login-video" loop muted playsinline>
+            <source src="loginv.mp4" type="video/mp4">
+        </video>
+        <div class="password-overlay">
+            <div class="password-box">
+                <p class="wedding-subtitle">August 8th, 2026 • Sweden</p>
+                <div class="password-input-container">
+                    <input type="password" id="password-input" placeholder="Enter password">
+                    <button id="enter-btn" onclick="checkPassword()">Enter</button>
+                </div>
+                <p class="password-hint">Please enter the password to view our wedding website</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="main-website" class="hidden">
+        <!-- Top Navigation Header -->
+        <nav class="top-nav">
+            <button class="nav-link" onclick="goToPage('welcome')">Home</button>
+            <button class="nav-link" onclick="goToPage('schedule')">Weekend Schedule</button>
+            <button class="nav-link" onclick="goToPage('rsvp')">RSVP</button>
+            <button class="nav-link" onclick="goToPage('contact')">Contact</button>
+        </nav>
+
+        <!-- Page Navigation Buttons -->
+        <button id="prev-page" class="page-nav-btn prev-btn" onclick="previousPage()">
+        </button>
+        <button id="next-page" class="page-nav-btn next-btn" onclick="nextPage()">
+        </button>
+
+        <!-- Page Container -->
+        <div class="page-container">
+
+            <!-- Welcome Page -->
+            <div id="welcome" class="page active">
+                <div class="page-content">
+                    <div class="hero-content">
+                        <img id="wedding-invite" src="Wedding Invite (1).png" alt="Wedding Invitation" class="wedding-invite-image">
+                        <div class="wedding-date">August 8th, 2026</div>
+                        <div class="wedding-location">Viken, Sweden</div>
+                        <p class="hero-description">
+                            Join us for a weekend full of celebration as we begin our journey together.<br>
+                            Ceremony at Vikens Kyrka, Viken, Sweden.<br>
+                            RSVP deadline: 31st March 2026.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Page -->
+            <div id="schedule" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">Weekend Schedule & Locations</h2>
+                    
+                    <div class="schedule-timeline">
+                        <!-- Friday Event -->
+                        <div class="timeline-event">
+                            <div class="event-content">
+                                <div class="date-badge">Friday, 7th August</div>
+                                <h3 class="event-title">Adam's Birthday Party</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>5:00 PM - 10:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>Bläsinge Gård</strong><br>
+                                            Jonstorp
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Casual attire, food & drinks provided.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday Ceremony -->
+                        <div class="timeline-event">
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Wedding Ceremony</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>12:00 PM - 1:00 PM</strong><br>
+                                            Viken Church
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Transportation from Bläsinge Gård to church provided for staying guests.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday Drinks & Canapés -->
+                        <div class="timeline-event">
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Drinks & Canapés</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>1:00 PM - 3:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Saga's parents' home</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday Evening -->
+                        <div class="timeline-event featured">
+                            <div class="event-content">
+                                <div class="date-badge">Saturday, 8th August</div>
+                                <h3 class="event-title">Evening Celebration</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Dinner and dancing until 3 AM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <div>
+                                            <strong>Bläsinge Gård</strong>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Transport arranged from Viken after canapés.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sunday Event -->
+                        <div class="timeline-event">
+                            <div class="event-content">
+                                <div class="date-badge">Sunday, 9th August</div>
+                                <h3 class="event-title">Farewell & Brunch</h3>
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>From 1:00 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="icon">•</span>
+                                        <span>Saga's parents' home</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP Page -->
+            <div id="rsvp" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">RSVP</h2>
+                    <p class="section-subtitle">Please let us know if you can join us for our special weekend<br>RSVP deadline: 31st March 2026</p>
+                    
+                    <form id="rsvp-form" class="rsvp-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="attendance">Will you be attending? *</label>
+                            <select id="attendance" name="attendance" required>
+                                <option value="">Please select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="events-group" style="display: none;">
+                            <label>Which days will you attend?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="friday">
+                                    <span>Friday - Adam's Birthday Party</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="saturday-ceremony">
+                                    <span>Saturday - Wedding Ceremony</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="saturday-reception">
+                                    <span>Saturday - Reception & Party</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="events" value="sunday">
+                                    <span>Sunday - Farewell Brunch</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dietary">Dietary restrictions</label>
+                            <textarea id="dietary" name="dietary" placeholder="Please let us know about any dietary restrictions or allergies"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="questions">Questions</label>
+                            <textarea id="questions" name="questions" placeholder="Any questions for us?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send RSVP</button>
+                    </form>
+                    
+                    <div id="rsvp-success" class="success-message hidden">
+                        <h3>Thank you!</h3>
+                        <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <div class="page-content">
+                    <h2 class="section-title">Contact</h2>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <h3>Saga Carle</h3>
+                            <div class="contact-info">
+                                <p>Email: saga.m.carle@gmail.com</p>
+                                <p>Phone: +44 7737 399600</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3>Adam Walker</h3>
+                            <div class="contact-info">
+                                <p>Email: adamdwalker91@gmail.com</p>
+                                <p>Phone: +44 7566 74010</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-info">
+                        <h3>Travel & Accommodation</h3>
+                        <p><strong>Recommended flight:</strong> Copenhagen Airport, then train to Helsingborg.</p>
+                        <p><strong>Accommodation:</strong> Nearby hotels and Airbnbs are available in Viken, Höganäs, and Mölle areas. Please contact Adam and Saga for recommendations.</p>
+                        <p><strong>Transportation:</strong> Transport is arranged for Friday and Saturday for Bläsinge Gård guests. For Sunday, please make your own arrangements or coordinate with other guests.</p>
+                        
+                        <h3>Local Taxi Services</h3>
+                        <div class="taxi-grid">
+                            <div class="taxi-card">
+                                <h4>Taxi Helsingborg 24x7</h4>
+                                <p class="taxi-phone">+46 42 18 09 00</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>FM Taxi Helsingborg</h4>
+                                <p class="taxi-phone">+46 42 551 15</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>Taxi Höganäs</h4>
+                                <p class="taxi-rating">Kullabygden Transport Service</p>
+                                <p class="taxi-phone">042-330 000</p>
+                                <p class="taxi-location">Höganäs, Sweden</p>
+                            </div>
+                            
+                            <div class="taxi-card">
+                                <h4>Helsingborg Taxi</h4>
+                                <p class="taxi-phone">+46 42 21 72 17</p>
+                                <p class="taxi-location">Helsingborg, Sweden</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Additional Information</h3>
+                        <p><strong>Weekend dates:</strong> 7th - 9th August 2026, Wedding on 8th August</p>
+                        <p><strong>RSVP deadline:</strong> 31st March 2026</p>
+                        <p><strong>Children policy:</strong> No kids except babies in arms named on invite</p>
+                        <p><strong>Gift registry:</strong> Your presence is the gift we treasure most. If you wish to contribute, honeymoon contributions are appreciated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
