@@ -209,23 +209,23 @@ html {
     }
 
     .login-video {
-        height: 85vh;
-        width: auto;
-        max-height: 85vh;
+        height: auto;
+        width: 100vw;
+        max-width: 100vw;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) rotate(90deg);
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
         object-fit: contain;
         object-position: center center;
     }
 
     .login-video.expanding {
-        height: 95vh;
-        width: auto;
-        max-height: 95vh;
+        height: auto;
+        width: 100vw;
+        max-width: 100vw;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) rotate(0deg);
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
         object-fit: contain;
         object-position: center center;
     }
