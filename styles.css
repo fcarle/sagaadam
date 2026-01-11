@@ -198,16 +198,19 @@ html {
     }
 
     .login-video {
-        height: auto;
-        width: 95vw;
-        max-height: 90vh;
+        height: 90vh;
+        width: auto;
+        max-width: 95vw;
         aspect-ratio: 1668 / 2224;
+        transform: translate(-50%, -50%) rotate(90deg);
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
     }
 
     .login-video.expanding {
-        height: auto;
-        width: 95vw;
-        max-height: 95vh;
+        height: 95vh;
+        width: auto;
+        transform: translate(-50%, -50%) rotate(90deg);
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
     }
 }
 
