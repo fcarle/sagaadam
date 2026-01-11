@@ -115,6 +115,9 @@ html {
     gap: 10px;
     margin-bottom: 20px;
     align-items: stretch;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #password-input {
@@ -185,6 +188,7 @@ html {
     .password-input-container {
         flex-direction: column;
         gap: 10px;
+        max-width: 180px;
     }
     
     #password-input {
@@ -206,8 +210,8 @@ html {
 
     .login-video {
         height: auto;
-        width: 85vw;
-        max-width: 400px;
+        width: 70vw;
+        max-width: 350px;
         aspect-ratio: 1668 / 2224;
         transform: translate(-50%, -50%) rotate(90deg);
         -webkit-transform: translate(-50%, -50%) rotate(90deg);
