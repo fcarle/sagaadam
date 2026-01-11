@@ -207,10 +207,13 @@ html {
     }
 
     .login-video.expanding {
-        height: 95vh;
-        width: auto;
+        height: auto;
+        width: 100vw;
+        max-height: 100vh;
+        aspect-ratio: 1668 / 2224;
         transform: translate(-50%, -50%) rotate(90deg);
         -webkit-transform: translate(-50%, -50%) rotate(90deg);
+        object-fit: contain;
     }
 }
 
