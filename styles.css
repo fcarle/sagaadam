@@ -210,8 +210,8 @@ html {
 
     .login-video {
         height: auto;
-        width: 70vw;
-        max-width: 350px;
+        width: 85vw;
+        max-width: 400px;
         aspect-ratio: 1668 / 2224;
         transform: translate(-50%, -50%) rotate(90deg);
         -webkit-transform: translate(-50%, -50%) rotate(90deg);
@@ -220,8 +220,8 @@ html {
     }
 
     .login-video.expanding {
-        width: 100vw;
-        max-width: none;
+        width: 85vw;
+        max-width: 500px;
         height: auto;
         max-height: 100vh;
         aspect-ratio: 1668 / 2224;
