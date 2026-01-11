@@ -209,8 +209,8 @@ html {
         width: 85vw;
         max-width: 400px;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) rotate(90deg);
+        -webkit-transform: translate(-50%, -50%) rotate(90deg);
         object-fit: contain;
         object-position: center center;
     }
@@ -221,8 +221,8 @@ html {
         height: auto;
         max-height: 100vh;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) rotate(0deg);
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
         object-fit: contain;
         object-position: center center;
     }
