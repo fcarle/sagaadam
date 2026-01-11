@@ -209,24 +209,23 @@ html {
     }
 
     .login-video {
-        height: auto;
-        width: 85vw;
-        max-width: 400px;
+        height: 85vh;
+        width: auto;
+        max-height: 85vh;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%) rotate(90deg);
-        -webkit-transform: translate(-50%, -50%) rotate(90deg);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
         object-fit: contain;
         object-position: center center;
     }
 
     .login-video.expanding {
-        width: 85vw;
-        max-width: 500px;
-        height: auto;
-        max-height: 100vh;
+        height: 95vh;
+        width: auto;
+        max-height: 95vh;
         aspect-ratio: 1668 / 2224;
-        transform: translate(-50%, -50%) rotate(0deg);
-        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
         object-fit: contain;
         object-position: center center;
     }
@@ -1056,10 +1055,10 @@ h1, h2, h3, h4 {
         font-size: 1rem;
     }
     
-    .section-title {
-        font-size: 2rem;
+    .scroll-indicator {
+        bottom: 20px;
     }
-    
+
     .countdown {
         gap: 20px;
     }
