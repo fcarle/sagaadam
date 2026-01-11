@@ -64,6 +64,8 @@ html {
     /* Ensure video displays on mobile */
     -webkit-transform: translate(-50%, -50%);
     background: var(--color-cream);
+    /* Fix image orientation from EXIF data */
+    image-orientation: from-image;
 }
 
 .login-video.expanding {
