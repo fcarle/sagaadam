@@ -68,6 +68,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Show video after CSS is fully applied to prevent rotation flash on Safari
+    const loginVideo = document.getElementById('login-video');
+    if (loginVideo) {
+        // Wait for video metadata to load and CSS to be applied
+        if (loginVideo.readyState >= 1) {
+            // Video metadata already loaded
+            setTimeout(() => {
+                loginVideo.classList.add('video-ready');
+            }, 50);
+        } else {
+            // Wait for metadata to load
+            loginVideo.addEventListener('loadedmetadata', function() {
+                setTimeout(() => {
+                    loginVideo.classList.add('video-ready');
+                }, 50);
+            });
+            // Fallback in case loadedmetadata doesn't fire
+            setTimeout(() => {
+                loginVideo.classList.add('video-ready');
+            }, 300);
+        }
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
