@@ -1,17 +1,5 @@
 // ===== Wedding Website JavaScript =====
 
-// ===== Video Autoplay for Mobile =====
-document.addEventListener('DOMContentLoaded', function() {
-    const loginVideo = document.getElementById('login-video');
-    if (loginVideo) {
-        // Try to play the video (may be blocked on mobile until interaction)
-        loginVideo.play().catch(function(error) {
-            console.log('Auto-play was prevented:', error);
-            // Video will show poster image as fallback
-        });
-    }
-});
-
 // ===== Password Protection =====
 const validPasswords = ['Wedding2026', 'wedding2026'];
 
