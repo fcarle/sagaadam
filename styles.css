@@ -1056,7 +1056,7 @@ h1, h2, h3, h4 {
     }
     
     .scroll-indicator {
-        bottom: 20px;
+        display: none;
     }
 
     .countdown {
